@@ -152,6 +152,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-gwc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/gwc/">text 购物车案例</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/21/gwc/" class="archive-article-date">
+  	<time datetime="2018-07-21T03:07:31.129Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>while True:<br>    money=input(‘请输入你的身价：’).strip()</p>
+<pre><code>#print(money.isdigit())
+if money.isdigit():
+    break
+else:
+    print(&apos;你的身价输入有误，请重新输入&apos;)
+</code></pre><p>money=int(money)<br>goods = [{“name”: “电脑”, “price”: 2999},<br>{“name”: “鼠标”, “price”: 1000},<br>{“name”: “游艇”, “price”: 2000},<br>{“name”: “美女”, “price”: 9998}]<br>buy=[]#放购买的商品<br>while True:<br>    print(‘请选择对应的商品编号’.center(30,’<em>‘))<br>    for i,j in enumerate(goods,1):<br>        print(‘编号：{}\t商品名称：{}\t商品价格：{}’.format(i,j[‘name’],j[‘price’]))<br>    print(‘</em>‘*50)<br>    number=input(‘请输入你要买的商品编号(充值请按C/c，删除请按D/d,退出请按Q/q)’).strip()<br>    if number.isdigit():<br>        number=int(number)<br>        if number&lt;=len(goods):<br>            if goods[number-1][‘price’]&lt;=money:<br>                buy.append(goods[number-1][‘name’])<br>                money-=goods[number-1][‘price’]<br>                print(‘已经购买成功%s，剩余资产%d’%(goods[number-1][‘name’],money))<br>                continue<br>            else:<br>                print(‘余额不足请充值’)<br>        else:<br>            print(‘没有当前商品’)<br>    elif number.upper()==’C’:<br>        print(‘充值’)<br>    elif number.upper()==’D’:<br>        print(‘删除’)<br>    elif number.upper()==’Q’:<br>        print(‘退出’)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/21/gwc/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-lfy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
