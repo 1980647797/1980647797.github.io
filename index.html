@@ -152,6 +152,124 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-bk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/25/bk/">博客园</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/25/bk/" class="archive-article-date">
+  	<time datetime="2018-07-25T09:41:22.558Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>启动程序，首页面应该显示成如下格式：</p>
+<pre><code>欢迎来到博客园首页
+
+1:请登录
+
+2:请注册
+
+3:文章页面
+
+4:日记页面
+
+5:评论页面
+
+6:收藏页面
+
+7:注销
+
+8:退出程序
+</code></pre><p>2)，用户输入选项，3~6选项必须在用户登录成功之后，才能访问成功。</p>
+<p>3)，用户选择登录，用户名密码从字典中读取验证，三次机会，没成功则结束整个程  序运行，成功之后，可以选择访问3~6项，访问页面之前，必须要在打印信息，  格式为–&gt;用户:xx 在xx年xx月xx日 执行了 %s操作，访问页面时，页面内容为：欢  迎xx用户访问评论（文章，日记，收藏）页面</p>
+<p>4)，如果用户没有注册，则可以选择注册，注册成功之后，可以自动完成登录（完成自动登录+5分），然后进入首页选择。</p>
+<p>5)，注销用户是指注销用户的登录状态，使其在访问任何页面时，必须重新登录。</p>
+<p>6)，退出程序为结束整个程序运行。<br>menu=[‘请登录’,’请注册’,’文章页面’,’日记页面’,’评论页面’,’收藏页面’,’注销’,’退出程序’]<br>import time<br>print(‘—欢迎来到博客园首页—‘)<br>flag=True<br>while flag:<br>    for i,j in enumerate(menu,1):<br>            print(i,j)<br>    print(‘——————————-‘)</p>
+<pre><code>#flag=False
+select_number=int(input(&apos;选择想要访问的功能编号：&apos;)
+</code></pre><p>def login():<br>    import datetime<br>    times=str(datetime.datetime.now())<br>    i=1<br>    while i&lt;=3:<br>        uname=input(‘请输入用户名：’)<br>        upwd=input(‘请输入密码:’)<br>        if uname in lisname and upwd==listuser[lisname.index(uname)][uname]:<br>            print(‘登录成功,你可以访问更多精彩内容’)<br>            print(‘用户:%s在%s日执行了%s操作’%(uname,times[:10],li[int(num)-1]))<br>            b=0<br>            return b,uname<br>            break<br>        else:<br>            if i&lt;3:<br>                print(‘登录失败，你还有%d次’%(3-i))<br>            else:<br>                print(‘程序结束’)<br>            i+=1<br>listuser=[]<br>lisname=[]<br>def register():<br>    uname=input(‘请输入用户名：’)<br>    upwd=input(‘请输入密码：’)<br>    uname=uname.strip()<br>    if uname!=False:<br>        lis={uname:upwd}<br>        print(‘注册成功！用户名：%s，密码：%s’%(uname,upwd))<br>        b=0<br>        return b,lis,uname<br>    else:<br>        print(‘用户名不能为空’)</p>
+<p>menu=[‘请登录’,’请注册’,’文章页面’,’日记页面’,’评论页面’,’收藏页面’,’注销’,’退出程序’]<br>print(‘—欢迎来到博客园首页—‘)<br>b=1<br>flag=True<br>while flag:<br>    import datetime<br>    times=str(datetime.datetime.now())<br>    for i,j in enumerate(menu,1):<br>            print(i,j)<br>    print(‘——————————-‘)</p>
+<pre><code>#flag=False
+select_number=input(&apos;选择想要访问的功能编号：&apos;)
+if select_number==&apos;1&apos;:
+   b,name=login()
+elif select_number==&apos;2&apos;:
+    b,lis,name=register()
+    lisname.append(name)
+    listuser.append(lis)
+elif select_number==&apos;3&apos; and b==0:
+    print(&apos;用户:%s在%s日执行了%s操作&apos;%(name,times[:10],menu[int(select_number)-1]))
+    print(&apos;----欢迎%s访问文章页面----&apos;%name)
+elif select_number==&apos;4&apos; and b==0:
+    print(&apos;用户:%s在%s日执行了%s操作&apos;%(name,times[:10],menu[int(select_number)-1]))
+    print(&apos;----欢迎%s访问日记页面----&apos;%name)
+elif select_number==&apos;5&apos; and b==0:
+    print(&apos;用户:%s在%s日执行了%s操作&apos;%(name,times[:10],menu[int(select_number)-1]))
+    print(&apos;----欢迎%s访问评论页面----&apos;%name)
+elif select_number==&apos;6&apos; and b==0:
+    print(&apos;用户:%s在%s日执行了%s操作&apos;%(name,times[:10],menu[int(select_number)-1]))
+    print(&apos;----欢迎%s访问收藏页面----&apos;%name)
+elif select_number==&apos;7&apos; and b==0:
+    print(&apos;用户:%s在%s日执行了%s操作&apos;%(name,times[:10],menu[int(select_number)-1]))
+    b=1
+    print(&apos;----该用户已注销登录----&apos;)
+elif select_number==&apos;8&apos;:
+    print(&apos;----感谢你的访问，欢迎下次再来----&apos;)
+    flag=False
+else:
+    print(&apos;输入有误或者未登录，重新输入&apos;)
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/25/bk/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-gwc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
