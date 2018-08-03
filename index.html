@@ -152,6 +152,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ypdd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/ypdd/">药品订单</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/ypdd/" class="archive-article-date">
+  	<time datetime="2018-08-03T09:38:59.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>gongnlist=[‘登录’,’药品购入’,’销售药品’,’药品库存’,’药品统计’,’注销’,’退出’]<br>yonghulist=[{‘姓名’:’张三’,’密码’:’111’,’身份’:’进货员’},{‘姓名’:’李四’,’密码’:’222’,’身份’:’销售员’},{‘姓名’:’王五’,’密码’:’333’,’身份’:’库管员’}]<br>yao=[‘感冒发烧’,’消化不良’]<br>gouMai=[]<br>xiaoShou=[]<br>zongYaolist=[]<br>cunyaolist=[‘999感冒灵’,’健胃消食片’]<br>cunyaodict=[{‘药名’:’999感冒灵’,’数量’:’0’,’保管人姓名’:’王五’},{‘药名’:’健胃消食片’,’数量’:’0’,’保管人姓名’:’王五’}]</p>
+<p>def login(b):<br>    i=1<br>    while i&lt;=3:<br>        uname=input(‘请输入用户名：’).strip()<br>        upwd=input(‘请输入密码：’).strip()<br>        for j in yonghulist:<br>            if uname==j[‘姓名’] and upwd==j[‘密码’]:<br>                b=1<br>                print(‘登录成功’)<br>        if i&lt;3 and b==0:<br>            print(‘登录失败,你还有%d次机会’%(3-i))<br>        elif b==1:<br>            break<br>        elif b==0:<br>            print(‘当前账户已锁定’)<br>        i+=1<br>    return uname,b#返回名字，登录状态</p>
+<p>#库存<br>def kucun():<br>    while True:<br>        print(cunyaodict)#打印库存数量<br>        newnum=input(‘输入1修改，2退出：’).strip()<br>        if newnum==’1’:<br>            for i,j in enumerate(cunyaolist,1):#打印药品编号<br>                print(i,j)<br>            newnum1=input(‘输入修改药品编号（退出输3）：’).strip()<br>            if newnum1==’1’:<br>                newnum2=input(‘输入库存数量’).strip()<br>                if newnum2.isdigit():<br>                    cunyaodict[int(newnum1)-1][‘数量’]=newnum2<br>                else:<br>                    print(‘输入错误’)<br>            elif newnum1==’2’:<br>                newnum3=input(‘输入库存数量’).strip()<br>                if newnum3.isdigit():<br>                    cunyaodict[int(newnum1)-1][‘数量’]=newnum3<br>                else:<br>                    print(‘输入错误’)<br>            elif newnum1==’3’:<br>                break<br>            else:<br>                print(‘输入错误’)<br>                continue<br>                print(cunyaodict)<br>        elif newnum==’2’:<br>            break<br>        else:<br>            print(‘输入错误’)</p>
+<p>#进货<br>def jinHuo():<br>    li=[‘购入及记录’,’查询库存’,’退出’]<br>    while True:<br>        for a,b in enumerate(li,1):<br>            print(a,b)<br>        num1=str(input(‘输入编号：’)).strip()<br>        if num1.isdigit()and num1==’1’:<br>            while True:<br>                import datetime<br>                times=str(datetime.datetime.now())<br>                for x in gouMai:<br>                    print(x)<br>                for i,j in enumerate(cunyaolist,1):#打印药品编号<br>                    print(i,j)<br>                num=str(input(‘输入进货编号：’)).strip()<br>                if num==’1’:#999感冒灵<br>                    num=int(num)<br>                    ypsl=str(input(‘输入进货数量：’)).strip()<br>                    if ypsl.isdigit() and int(ypsl)&gt;=0:<br>                        gouMai.append({‘编号’: ‘1001’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘1’, ‘单价’: ‘15’, ‘进货时间’:times[:19], ‘姓名’: ‘张三’,’数量’:ypsl})<br>                        zongYaolist.append({‘编号’: ‘1001’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘1’, ‘单价’: ‘15’, ‘入库时间’:times[:19], ‘保管人姓名’: ‘王五’,’数量’:ypsl})<br>                        cunyaodict[num-1][‘数量’]=int(cunyaodict[num-1][‘数量’])+int(ypsl)<br>                        for x in gouMai:<br>                            print(x)<br>                        break<br>                    else:<br>                        print(‘输入错误’)<br>                elif num==’2’:#健胃消食片<br>                    num=int(num)<br>                    ypsl=str(input(‘输入进货数量：’)).strip()<br>                    if ypsl.isdigit() and int(ypsl)&gt;=0:<br>                        gouMai.append({‘编号’: ‘1002’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘2’, ‘单价’: ‘20’, ‘进货时间’:times[:19], ‘姓名’: ‘张三’,’数量’:ypsl})<br>                        zongYaolist.append({‘编号’: ‘1002’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘2’, ‘单价’: ‘20’, ‘入库时间’:times[:19], ‘保管人姓名’: ‘王五’,’数量’:ypsl})<br>                        cunyaodict[num-1][‘数量’]=int(cunyaodict[num-1][‘数量’])+int(ypsl)<br>                        for x in gouMai:<br>                            print(x)<br>                        break<br>                    else:<br>                        print(‘输入错误’)<br>                else:<br>                    print(‘输入错误’)<br>        elif num1.isdigit()and num1==’2’:#修改库存<br>            kucun()<br>        elif num1.isdigit()and num1==’3’:<br>            break<br>        else:<br>            print(‘输入错误’)</p>
+<p>#出售<br>def shouHuo():<br>    li=[‘售出及记录’,’查询库存’,’退出’]<br>    while True:<br>        for a,b in enumerate(li,1):#打印出售菜单<br>            print(a,b)<br>        num1=str(input(‘输入编号：’)).strip()<br>        if num1.isdigit()and num1==’1’:<br>            while True:<br>                import datetime<br>                times=str(datetime.datetime.now())<br>                for x in xiaoShou:<br>                    print(x)<br>                for i,j in enumerate(cunyaolist,1):#打印药品编号<br>                    print(i,j)<br>                num=str(input(‘输入销售编号：’)).strip()<br>                if num==’1’:#999感冒灵<br>                    num=int(num)<br>                    ypsl=str(input(‘输入销售数量Q/q退出：’)).strip()<br>                    zPrice=8<em>int(ypsl)<br>                    if ypsl.isdigit() and int(ypsl)&lt;=int(cunyaodict[num-1][‘数量’]):<br>                        xiaoShou.append({‘编号’: ‘1001’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘1’, ‘单价’: ‘23’,’利润’:zPrice,’销售时间’:times[:19], ‘姓名’: ‘李四’,’数量’:ypsl})<br>                        zongYaolist.append({‘编号’: ‘1001’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘1’, ‘单价’: ‘23’,’利润’:zPrice,’出库时间’:times[:19], ‘保管人姓名’: ‘王五’,’数量’:ypsl})<br>                        cunyaodict[num-1][‘数量’]=int(cunyaodict[num-1][‘数量’])-int(ypsl)<br>                        for x in xiaoShou:<br>                            print(x)<br>                        break<br>                    elif ypsl.upper()==’Q’:<br>                        break<br>                    else:<br>                        print(‘输入错误或库存不足’)<br>                elif num==’2’:#健胃消食片<br>                    num=int(num)<br>                    ypsl=str(input(‘输入销售数量Q/q退出：’)).strip()<br>                    zPrice=10</em>int(ypsl)<br>                    if ypsl.isdigit() and int(ypsl)&lt;=int(cunyaodict[num-1][‘数量’]):<br>                        xiaoShou.append({‘编号’: ‘1002’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘2’, ‘单价’: ‘30’,’利润’:zPrice,’销售时间’:times[:19], ‘姓名’: ‘李四’,’数量’:ypsl})<br>                        zongYaolist.append({‘编号’: ‘1002’, ‘药名’:cunyaolist[num-1], ‘分类’: ‘2’, ‘单价’: ‘30’,’利润’:zPrice,’出库时间’:times[:19], ‘保管人姓名’: ‘王五’,’数量’:ypsl})<br>                        cunyaodict[num-1][‘数量’]=int(cunyaodict[num-1][‘数量’])-int(ypsl)<br>                        for x in xiaoShou:<br>                            print(x)<br>                        break<br>                    elif ypsl.upper()==’Q’:<br>                        break<br>                    else:<br>                        print(‘输入错误或库存不足’)<br>                else:<br>                    print(‘输入错误’)<br>        elif num1.isdigit()and num1==’2’:#修改库存<br>            kucun()</p>
+<pre><code>elif num1.isdigit()and num1==&apos;3&apos;:
+    break
+else:
+    print(&apos;输入错误&apos;)
+</code></pre><h1 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h1><p>def tongJi():<br>    sum1,sum2,sum3,sum4=0,0,0,0<br>    for i in xiaoShou:<br>        if i[‘药名’]==’999感冒灵’:<br>            sum1+=int(i[‘数量’])<br>        elif i[‘药名’]==’健胃消食片’:<br>            sum2+=int(i[‘数量’])<br>    print(‘药品名称:{},销售数量:{},药品总价:{}’.format(‘999感冒灵’,sum1,23<em>sum1))<br>    print(‘药品名称:{},销售数量:{},药品总价:{}’.format(‘健胃消食片’,sum2,30</em>sum2))<br>    for a in gouMai:<br>        if a[‘药名’]==’999感冒灵’:<br>            sum3+=int(a[‘数量’])<br>        elif a[‘药名’]==’健胃消食片’:<br>            sum4+=int(a[‘数量’])<br>    while True:<br>        for j,k in enumerate(cunyaolist,1):<br>            print(j,k)<br>        num=input(‘输入查询编号(输入3退出)：’)<br>        if num==’1’:<br>            print(‘药品名称:{},购入数量:{},购入人:{},销售数量:{},销售人:{},库存数量:{},保管人:{}’.format(‘999感冒灵’,sum3,’张三’,sum1,’李四’,cunyaodict[int(num)-1][‘数量’],’王五’))<br>        elif num==’2’:<br>            print(‘药品名称:{},购入数量:{},购入人:{},销售数量:{},销售人:{},库存数量:{},保管人:{}’.format(‘健胃消食片’,sum4,’张三’,sum2,’李四’,cunyaodict[int(num)-1][‘数量’],’王五’))<br>        elif num==’3’:<br>            break<br>        else:<br>            print(‘输入错误’)</p>
+<h1 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h1><p>b=0<br>while True:<br>    print(‘–’<em>25)<br>    for i,j in enumerate(gongnlist,1):#打印总菜单<br>        print(i,j)<br>    print(‘–’</em>25)<br>    gongNum=input(‘输入功能编号：’).strip()<br>    if gongNum==’1’:#登录<br>        if b==1:<br>            print(‘您已登陆’)<br>        else:<br>            name,b=login(b)<br>    elif gongNum==’2’and b==1:#购药<br>        if name==’张三’:<br>            jinHuo()<br>        else:<br>            print(‘您没有权限’)<br>    elif gongNum==’3’and b==1:#销售<br>        if name==’李四’:<br>            shouHuo()<br>        else:<br>            print(‘您没有权限’)<br>    elif gongNum==’4’ and b==1:#库存<br>        for s in zongYaolist:<br>            print(s)<br>        kucun()<br>    elif gongNum==’5’and b==1:<br>        tongJi()<br>    elif gongNum==’6’and b==1:<br>        b=0<br>        name=’麻子’#注销<br>        print(‘注销成功’)<br>    elif gongNum==’7’:<br>        print(‘已退出’)<br>        break<br>    else:<br>        print(‘未登录或输入错误’)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/03/ypdd/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-wj" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
