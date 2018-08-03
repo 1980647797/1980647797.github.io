@@ -152,6 +152,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-wj" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/wj/">文件操作对信息的操作</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/wj/" class="archive-article-date">
+  	<time datetime="2018-08-03T09:33:13.311Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#增加员工信息函数<br>def increase():<br>    flag=False<br>    with open(‘information.txt’,’r’) as f1:<br>        filename=input(‘输入你想要添加的用户名:’).strip().title()<br>        for line in f1:<br>            if line.split()[0]==filename:<br>                flag=True<br>                print(‘要添加的用户已存在’)<br>        if flag==False:<br>            money=input(‘输入工资：’).strip()<br>            if money.isdigit():<br>                with open(‘information.txt’,’a+’) as f2:<br>                    f2.write(filename+’ ‘+money+’\n’)<br>                    print(‘添加成功！’)<br>                    print(‘用户名:{},工资：{}’.format(filename,money))</p>
+<h1 id="查询员工信息函数"><a href="#查询员工信息函数" class="headerlink" title="#查询员工信息函数"></a>#查询员工信息函数</h1><p>def inquire():<br>    flag=False<br>    with open(‘information.txt’,’r’) as f3:<br>        inquire_name=input(‘输入你想要查询的用户名:’).strip().title()<br>        for line in f3:<br>            if line.split()[0]==inquire_name:<br>                print(‘用户名为:’,inquire_name,’工资为:’,line.split()[1])<br>                flag=True<br>        if flag==False:<br>            print(‘查无此人！’)</p>
+<h1 id="删除员工信息函数"><a href="#删除员工信息函数" class="headerlink" title="#删除员工信息函数"></a>#删除员工信息函数</h1><p>def delete():<br>    flag=False<br>    str1=’’<br>    with open(‘information.txt’,’r’) as f4:<br>        del_name=input(‘输入你想要删除的用户名:’).strip().title()<br>        for line in f4:<br>            if del_name in line:<br>                flag=True<br>                continue<br>            str1+=line<br>        with open(‘information.txt’,’w’) as f5:<br>            f5.write(str1)<br>        print(‘删除信息成功！’)<br>        if flag==False:<br>            print(‘你要删除的用户不存在！’)</p>
+<h1 id="修改员工信息函数"><a href="#修改员工信息函数" class="headerlink" title="#修改员工信息函数"></a>#修改员工信息函数</h1><p>def mod():<br>    flag=False<br>    str1=’’<br>    with open(‘information.txt’,’r’) as f6:<br>        mod_name=input(‘输入你想要修改的用户名:’).strip().title()<br>        for line in f6:<br>            if mod_name in line:<br>                flag=True<br>                list_mod_name=line.split()<br>                new_moey=input(‘输入修改后的工资:’).strip()<br>                line=line.replace(list_mod_name[1],new_moey)<br>            str1+=line<br>        with open(‘information.txt’,’w’) as f7:<br>            f7.write(str1)<br>        print(‘修改信息成功！’)<br>        if flag==False:<br>            print(‘你要修改的用户不存在！’)</p>
+<p>li=[‘增加员工信息’,’查询员工信息’,’删除员工信息’,’修改员工信息’,’退出’]<br>def main():<br>    while True:<br>        print(‘<em>‘</em>30)<br>        for i,j in enumerate(li,1):<br>            print(i,j)<br>        print(‘<em>‘</em>30)<br>        seclect_num=input(‘输入选项:’).strip()<br>        if seclect_num.isdigit:<br>            if seclect_num==’1’:<br>                increase()<br>            elif seclect_num==’2’:<br>                inquire()<br>            elif seclect_num==’3’:<br>                delete()<br>            elif seclect_num==’4’:<br>                mod()<br>            elif seclect_num==’5’:<br>                exit()<br>        else:<br>            print(‘输入错误,请重新输入’)<br>main()</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/03/wj/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-bk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

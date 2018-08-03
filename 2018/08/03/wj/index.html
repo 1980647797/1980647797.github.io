@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>文件操作对信息的操作 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="#增加员工信息函数def increase():    flag=False    with open(‘information.txt’,’r’) as f1:        filename=input(‘输入你想要添加的用户名:’).strip().title()        for line in f1:            if line.split()[0]==filename:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件操作对信息的操作">
+<meta property="og:url" content="http://yoursite.com/2018/08/03/wj/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#增加员工信息函数def increase():    flag=False    with open(‘information.txt’,’r’) as f1:        filename=input(‘输入你想要添加的用户名:’).strip().title()        for line in f1:            if line.split()[0]==filename:">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-03T09:32:19.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="文件操作对信息的操作">
+<meta name="twitter:description" content="#增加员工信息函数def increase():    flag=False    with open(‘information.txt’,’r’) as f1:        filename=input(‘输入你想要添加的用户名:’).strip().title()        for line in f1:            if line.split()[0]==filename:">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,141 +154,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-wj" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      文件操作对信息的操作
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/03/wj/" class="archive-article-date">
+
+        
+        <a href="/2018/08/03/wj/" class="archive-article-date">
   	<time datetime="2018-08-03T09:33:13.311Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/03/wj/">文件操作对信息的操作</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#增加员工信息函数<br>def increase():<br>    flag=False<br>    with open(‘information.txt’,’r’) as f1:<br>        filename=input(‘输入你想要添加的用户名:’).strip().title()<br>        for line in f1:<br>            if line.split()[0]==filename:<br>                flag=True<br>                print(‘要添加的用户已存在’)<br>        if flag==False:<br>            money=input(‘输入工资：’).strip()<br>            if money.isdigit():<br>                with open(‘information.txt’,’a+’) as f2:<br>                    f2.write(filename+’ ‘+money+’\n’)<br>                    print(‘添加成功！’)<br>                    print(‘用户名:{},工资：{}’.format(filename,money))</p>
+<h1 id="查询员工信息函数"><a href="#查询员工信息函数" class="headerlink" title="#查询员工信息函数"></a>#查询员工信息函数</h1><p>def inquire():<br>    flag=False<br>    with open(‘information.txt’,’r’) as f3:<br>        inquire_name=input(‘输入你想要查询的用户名:’).strip().title()<br>        for line in f3:<br>            if line.split()[0]==inquire_name:<br>                print(‘用户名为:’,inquire_name,’工资为:’,line.split()[1])<br>                flag=True<br>        if flag==False:<br>            print(‘查无此人！’)</p>
+<h1 id="删除员工信息函数"><a href="#删除员工信息函数" class="headerlink" title="#删除员工信息函数"></a>#删除员工信息函数</h1><p>def delete():<br>    flag=False<br>    str1=’’<br>    with open(‘information.txt’,’r’) as f4:<br>        del_name=input(‘输入你想要删除的用户名:’).strip().title()<br>        for line in f4:<br>            if del_name in line:<br>                flag=True<br>                continue<br>            str1+=line<br>        with open(‘information.txt’,’w’) as f5:<br>            f5.write(str1)<br>        print(‘删除信息成功！’)<br>        if flag==False:<br>            print(‘你要删除的用户不存在！’)</p>
+<h1 id="修改员工信息函数"><a href="#修改员工信息函数" class="headerlink" title="#修改员工信息函数"></a>#修改员工信息函数</h1><p>def mod():<br>    flag=False<br>    str1=’’<br>    with open(‘information.txt’,’r’) as f6:<br>        mod_name=input(‘输入你想要修改的用户名:’).strip().title()<br>        for line in f6:<br>            if mod_name in line:<br>                flag=True<br>                list_mod_name=line.split()<br>                new_moey=input(‘输入修改后的工资:’).strip()<br>                line=line.replace(list_mod_name[1],new_moey)<br>            str1+=line<br>        with open(‘information.txt’,’w’) as f7:<br>            f7.write(str1)<br>        print(‘修改信息成功！’)<br>        if flag==False:<br>            print(‘你要修改的用户不存在！’)</p>
+<p>li=[‘增加员工信息’,’查询员工信息’,’删除员工信息’,’修改员工信息’,’退出’]<br>def main():<br>    while True:<br>        print(‘<em>‘</em>30)<br>        for i,j in enumerate(li,1):<br>            print(i,j)<br>        print(‘<em>‘</em>30)<br>        seclect_num=input(‘输入选项:’).strip()<br>        if seclect_num.isdigit:<br>            if seclect_num==’1’:<br>                increase()<br>            elif seclect_num==’2’:<br>                inquire()<br>            elif seclect_num==’3’:<br>                delete()<br>            elif seclect_num==’4’:<br>                mod()<br>            elif seclect_num==’5’:<br>                exit()<br>        else:<br>            print(‘输入错误,请重新输入’)<br>main()</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/03/wj/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/25/bk/" class="archive-article-date">
-  	<time datetime="2018-07-25T09:50:30.631Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/25/bk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博客园</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/25/bk/">博客园</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/21/gwc/" class="archive-article-date">
-  	<time datetime="2018-07-21T03:07:31.129Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/21/gwc/">text 购物车案例</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/17/lfy/" class="archive-article-date">
-  	<time datetime="2018-07-17T07:35:58.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/17/lfy/">冷风</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hello</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -307,8 +330,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
